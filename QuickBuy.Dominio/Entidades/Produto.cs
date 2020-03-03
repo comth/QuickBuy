@@ -9,7 +9,8 @@
 
         public override void Validade()
         {
-            throw new System.NotImplementedException();
+            if (string.IsNullOrEmpty(Nome))
+                AdicionarCritica("Crítica - Nome deve estar preenchido");
         }
     }
 }
