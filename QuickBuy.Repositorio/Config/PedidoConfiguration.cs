@@ -33,6 +33,8 @@ namespace QuickBuy.Repositorio.Config
                 .IsRequired()
                 .HasMaxLength(10);
 
+            //builder.HasOne(p=> p.Usuario)
+
         }
     }
 }

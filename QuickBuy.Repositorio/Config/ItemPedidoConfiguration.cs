@@ -18,7 +18,6 @@ namespace QuickBuy.Repositorio.Config
                 .Property(i => i.Quantidade)
                 .IsRequired();
 
-
         }
     }
 }
