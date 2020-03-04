@@ -35,6 +35,8 @@ namespace QuickBuy.Repositorio.Config
 
             //builder.HasOne(p=> p.Usuario)
 
+            builder.HasOne(p => p.FormaPagamento);
+
         }
     }
 }
