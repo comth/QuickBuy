@@ -8,5 +8,6 @@ namespace QuickBuy.Repositorio.Repositorios
 {
     class ProdutoRepositorio : BaseRepositorio<Produto>, IProdutoRepositorio
     {
+
     }
 }
