@@ -1,19 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using Microsoft.AspNetCore.Mvc;
+using QuickBuy.Dominio.Contratos;
+using QuickBuy.Dominio.Entidades;
+using System;
 
 namespace QuickBuy.Web.Controllers
 {
-    public class UsuarioController : Controller
+	[ApiController]
+	[Route("[controller]")]
+	public class UsuarioController : Controller
     {
-        // GET: /<controller>/
-        public IActionResult Index()
+		private readonly IUsuarioRepositorio usuarioRepositorio;
+		public UsuarioController(IUsuarioRepositorio usuarioRepositorio)
+		{
+			this.usuarioRepositorio = usuarioRepositorio;
+		}
+
+		[HttpPost]
+        public ActionResult Post()
         {
-            return View();
+			try
+			{
+				return Ok();
+			}
+			catch (Exception e)
+			{
+
+				return BadRequest(e.ToString());
+			}
         }
-    }
+
+		[HttpGet]
+		public ActionResult Get()
+		{
+			try
+			{
+				return Ok();
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(ex.ToString());
+			}
+		}
+
+		[HttpPost("VerificarUsuario")]
+		public ActionResult VerificarUsuario([FromBody] Usuario usuario)
+		{
+			try
+			{
+				var usuarioRetorno = usuarioRepositorio.ObterPorId(1);
+				if(usuarioRetorno != null)
+				{
+					return Ok(usuarioRetorno);
+				}
+				return BadRequest("Usuario e/ou Senha inválido(s)");
+			}
+			catch (Exception e)
+			{
+
+				return BadRequest(e.ToString());
+			}
+		}
+	}
 }

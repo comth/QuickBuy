@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   public usuario;
   public returnUrl: string;
+  public mensagem: string;
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute,
     private usuarioServico: UsuarioServico) {
@@ -30,17 +31,20 @@ export class LoginComponent implements OnInit {
     //produto(resultado dos métodos???) que ele oferece se inscrevam
     this.usuarioServico.verificarUsuario(this.usuario).subscribe(
       data => {
+        this.usuarioServico.usuario = data;
 
+        
+
+        if (this.returnUrl == null) {
+          this.router.navigate(['/']);
+        } else {
+          this.router.navigate([this.returnUrl]);
+        }
       },
       err => {
-
+        this.mensagem = err.error;
       }
     );
 
-    //if (this.usuario.email == "aaa@aaa.com" && this.usuario.senha == "aaa")
-    //{
-    //  sessionStorage.setItem("usuario-autenticado", "1");
-    //  this.router.navigate([this.returnUrl]);
-    //}
     }
 }

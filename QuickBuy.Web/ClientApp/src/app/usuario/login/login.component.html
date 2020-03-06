@@ -41,11 +41,14 @@
       </div>
     </div>
 
-    <button class="btn btn-lg btn-secondary btn-block"
+    <button class="btn btn-lg btn-secondary btn-block "
             type="submit" (click)="entrar()">
       Entrar
     </button>
 
+    <div class="alert alert-danger" *ngIf="mensagem">
+      {{mensagem}}
+    </div>
 
   </form>
 </div>
