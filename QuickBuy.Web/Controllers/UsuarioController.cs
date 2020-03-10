@@ -47,7 +47,7 @@ namespace QuickBuy.Web.Controllers
 		{
 			try
 			{
-				var usuarioRetorno = usuarioRepositorio.ObterPorId(1);
+				var usuarioRetorno = usuarioRepositorio.Obter(usuario.Email,usuario.Senha);
 				if(usuarioRetorno != null)
 				{
 					return Ok(usuarioRetorno);

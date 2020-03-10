@@ -1,3 +1,5 @@
+using IBM.EntityFrameworkCore;
+using IBM.EntityFrameworkCore.Storage.Internal;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,10 +31,8 @@ namespace QuickBuy.Web
             services.AddControllersWithViews();
             var connectionString = Configuration.GetConnectionString("QuickBuyDB");
 
-            services.AddDbContext<QuickBuyContexto>(option => option
-                                                                .UseLazyLoadingProxies()
-                                                                .UseMySql(connectionString, m => m
-                                                                .MigrationsAssembly("QuickBuy.Repositorio")));
+            IServiceCollection serviceCollection = services.AddDbContext<QuickBuyContexto>(options => options.UseDb2(connectionString, p => p.SetServerInfo(IBMDBServerType.LUW, IBMDBServerVersion.OS390_11_01)));
+
 
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();

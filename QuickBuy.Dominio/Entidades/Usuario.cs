@@ -9,6 +9,7 @@ namespace QuickBuy.Dominio.Entidades
         public string Senha { get; set; }
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
+        public string Username { get; set; }
 
         //one to many
         public virtual ICollection<Pedido> Pedidos { get; set; }

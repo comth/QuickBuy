@@ -11,7 +11,7 @@ namespace QuickBuy.Dominio.Entidades
             // se _mensagensValidacao for nula, ele retorna uma instância vazia
             get { return _mensagensValidacao ?? (_mensagensValidacao = new List<string>()); }
         }
-        protected bool EhValido
+        protected bool IsValid
         {
             get { return !mensagemValidacao.Any(); }
         }

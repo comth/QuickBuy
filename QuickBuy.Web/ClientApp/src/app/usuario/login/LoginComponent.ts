@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.usuarioServico.verificarUsuario(this.usuario).subscribe(
       data => {
         this.usuarioServico.usuario = data;
-
+        console.info(data);
         
 
         if (this.returnUrl == null) {
